@@ -1,0 +1,41 @@
+if !req.param('noLayout')
+  include ../includes/head.jade
+
+////////////////////////////////
+
+#stage
+  .row
+
+    .medium-8.large-10.columns
+
+      article
+
+        .flex-video
+                  iframe(src='http://www.youtube.com/embed/#{youtubeID}', width='640px', height='390px', frameborder='0', allowfullscreen)
+
+        h1.title.page-title= title
+
+        - var writtenOn = new Date(createdAt); var month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        em.by-line #{poster.pseudonym} on #{month[writtenOn.getMonth()]} #{writtenOn.getDate()}, #{writtenOn.getFullYear()}
+
+        .content!= html
+
+      hr
+
+      .fb-comments(data-href='#{req.protocol}://#{req.get("host")}/video/#{slug}', data-width='600')
+
+    .medium-4.large-2.columns
+      #vertical-ad.show-for-medium-up
+
+  if req.session.user
+    #authenticatedUserMessage.show-for-large-up
+      strong Hey there,
+      |  I noticed you're logged in.
+      a.tiny.button.admin-link(href="/admin/video/#{id}", target='_blank').
+        Click here to open this video in the admin portal
+
+
+////////////////////////////////
+
+if !req.param('noLayout')
+  include ../includes/footer.jade

@@ -1,0 +1,87 @@
+doctype html
+html
+  head
+    title Team Jukka | Moderointi
+
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')  
+    link(rel="stylesheet", href="/bower_components/foundation/css/foundation.css")
+    
+    style.
+      body {
+        margin-top: 30px;
+      }
+
+  body
+    .row
+      .small-8.medium-6.large-4.small-centered.columns
+        h1 Login
+
+        - var err = req.flash('loginErr')
+        if err.length > 0
+          .alert-box.alert= err
+        
+        form(method='POST', action='/auth/login', name='loginForm')
+          input(type='email', placeholder='Sähköposti', name='email', required)
+          
+          input(type='password', placeholder='Salasana', name='password', required)
+          
+          - var redirect = req.flash('redirect')
+          if redirect.length > 0
+            input(type='hidden', name='redirect', value=redirect)
+
+          button.tiny(type='submit') Kirjaudu
+
+          br
+
+          small: a(data-reveal-id='forgotPasswordModal') Unohdin salasanani
+    
+    #forgotPasswordModal.reveal-modal(data-reveal)
+      h3 Äh, miten voit unohtaa salasanasi!
+      h6.subheader Kirjoita salasanasi tähän, äläkä nyt vielä typota...
+      
+      form#forgotPasswordForm
+        input(type='email', placeholder='Sähköpostiosoite', name='forgotPass', required)
+        button#resetPassBtn.tiny(type='submit') UUSI SALASANA
+        br
+        small#lastPassMessage(style='display: none;')
+          | &nbsp;sitten kannattaa asentaa
+          a(href='https://lastpass.com/') LastPass
+          | &nbsp;ettei tällaista pääse käymään uudelleen.
+      
+      #passwordResetErrMessage.alert-box.alert(style='display: none;')
+
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/foundation/js/foundation.min.js')
+    script.
+      $(document).foundation()
+      $('#forgotPasswordForm').submit(function(e) {
+        $('#resetPassBtn')
+          .attr('disabled', 'disabled')
+          .text('SALASANAA NOLLATAAN...')
+
+        var email = $('input[name=forgotPass]').val()
+
+        $.ajax({
+          url: '/user/resetPassword',
+          type: 'GET',
+          data: {
+            email: email
+          },
+          success: function() {
+            $('#resetPassBtn').text('SALASANASI ON NYT NOLLATTU, KÄY SÄHKÖPOSTISSASI.')
+            $('#lastPassMessage').show()
+          },
+          error: function(err) {
+            $('#resetPassBtn')
+              .removeAttr('disabled')
+              .text('RESET PASSWORD')
+
+            $('#passwordResetErrMessage').text(err.responseJSON.error || 'Hups, näin ei käy koskaan..').show()
+            
+            console.error(err)
+          }
+        })
+
+        e.preventDefault()
+        e.stopPropagation()
+      })

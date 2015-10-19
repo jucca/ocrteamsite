@@ -1,0 +1,30 @@
+if !req.param('noLayout')
+  include ../includes/head.jade
+
+////////////////////////////////
+
+#stage
+  section#features.section
+    .container
+      if req.param('category') && !req.param('page')
+        .section-header
+          h1.section-title.wow.fadeInRight(data-wow-duration="1000ms" data-wow-delay="100ms") Jutut
+      - for article in articles
+        .row
+          .col-md-4.col-sm-6.wow.fadeInDown(data-wow-duration="1000ms" data-wow-delay="300ms")
+            .features
+            if (article.headlineImg)
+              .icon
+                a(href='/article/#{article.slug}'): img(src=article.headlineImg.thumb)
+              .features-text
+                a(href='/article/#{article.slug}'): h4= article.title
+                a(href='/article/#{article.slug}'): strong.description= article.description
+        hr
+
+    .medium-4.large-2.columns
+      #vertical-ad.show-for-medium-up
+        
+////////////////////////////////
+
+if !req.param('noLayout')
+  include ../includes/footer.jade

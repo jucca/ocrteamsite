@@ -1,0 +1,47 @@
+ul.side-nav(ng-controller='navCtrl')
+
+  li: a(ng-class="{ active:isActive('/article') }", ui-sref="article")
+    .fa.fa-file-text-o
+    span Jutut
+
+  li: a(ng-class="{ active:isActive('/picture') }", ui-sref="picture")
+    .fa.fa-picture-o
+    span Kuvat
+
+  li: a(ng-class="{ active:isActive('/video') }", ui-sref="video")
+    .fa.fa-video-camera
+    span Videot
+
+  li: a(ng-class="{ active:isActive('/profile') }", ui-sref='profile')
+    .fa.fa-user
+    span Profiili
+
+  if (req.session.user.isAdmin)
+
+    hr
+
+    li: a(ng-class="{ active:isActive('/user') }", ui-sref='user')
+      .fa.fa-users
+      span Kirjoittajat
+
+    li: a(ng-class="{ active:isActive('/ad') }", ui-sref='ad')
+      .fa.fa-credit-card
+      span Mainokset
+
+    li: a(ng-class="{ active:isActive('/mail') }", ui-sref='mail')
+      div
+        .fa.fa-envelope
+        span Sposti
+      .round.label(ng-if="unreadEmailCounts.kudos > 0") {{ unreadEmailCounts.kudos }}
+      .round.alert.label(ng-if="unreadEmailCounts.hatemail > 0") {{ unreadEmailCounts.hatemail }}
+      .round.success.label(ng-if="unreadEmailCounts.advertisers > 0") {{ unreadEmailCounts.advertisers }}
+
+  hr
+
+  li: small: a
+    .fa.fa-mail-reply
+    span Takaisin julkiselle puolelle
+
+  li: small: a(href='/logout', target='_self')
+    .fa.fa-angellist
+    span Kirjaudu ulos

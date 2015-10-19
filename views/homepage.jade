@@ -1,0 +1,118 @@
+if !req.param('noLayout')
+  include includes/head.jade
+
+////////////////////////////////
+
+#stage
+section#main-features.section.main-feature-gray
+  .container
+    .section-header
+      h1.section-title.wow.fadeInRight Kiinnostavimmat jutut
+    .row  
+      .col-md-8.col-sm-8.wow.fadeInLeft.feature-item(data-wow-duration='1000ms', data-wow-delay='300ms')
+            
+      each article, index in news.trending
+
+        if index === 0
+
+          .row
+            .col-md-8.col-sm-8.wow.fadeInLeft.feature-item(data-wow-duration='1000ms', data-wow-delay='300ms')
+              a(href='/article/#{article.slug}'): img(src=article.headlineImg.feature)
+              br
+              br
+            .col-md-8.col-sm-8.wow.fadeInLeft.feature-item(data-wow-duration='1000ms', data-wow-delay='300ms')
+              a(href='/article/#{article.slug}')
+                h4.title-small: strong= article.title
+                h6.title-small= article.description
+
+        if index !== 0
+
+          .row
+            .col-md-8.col-sm-8.wow.fadeInLeft.feature-item(data-wow-duration='1000ms', data-wow-delay='300ms')
+              a(href='/article/#{article.slug}'): img(src=article.headlineImg.thumb)
+            .col-md-8.col-sm-8.wow.fadeInLeft.feature-item(data-wow-duration='1000ms', data-wow-delay='300ms')
+              a(href='/article/#{article.slug}')
+                h5.title-small= article.title
+                h6.title-small= article.description
+
+        if index != 3
+          hr
+section#other-features
+  .container
+    .section-header
+      h1.section-title.wow.fadeInRight(data-wow-duration="1000ms", data-wow-delay="300ms") Havainnot
+        
+      each article, index in columns
+        if index === 0
+          .row
+            .col-md-3 col-sm-6.wow.fadeInUp(data-wow-duration="1000ms", data-wow-delay="400ms")
+              .features-content
+                a(href='/article/#{article.slug}'): img(src=article.headlineImg.feature)
+                br
+                br
+            .col-md-3 col-sm-6.wow.fadeInUp(data-wow-duration="1000ms", data-wow-delay="400ms")
+                a(href='/article/#{article.slug}')
+                  h3= article.title
+                  p= article.description
+
+        if index !== 0
+
+          .row
+            .col-md-3 col-sm-6.wow.fadeInUp(data-wow-duration="1000ms", data-wow-delay="400ms")
+              a(href='/article/#{article.slug}'): img(src=article.headlineImg.thumb)
+            .col-md-3 col-sm-6.wow.fadeInUp(data-wow-duration="1000ms", data-wow-delay="400ms")
+              a(href='/article/#{article.slug}')
+                h3= article.title
+                p= article.description
+
+        if index != 3
+          hr
+
+section#screenshot.section
+  .container
+    .section-header
+      h1.section-title.wow.fadeInRight(data-wow-duration="1000ms", data-wow-delay="300ms") Videot
+    each video, index in videos
+      if index === 0
+      .row
+        .col-md-4.col-sm-6.col-xs-12
+          .portfolio
+            figure.effect-julia
+              a(href='/video/#{video.slug}'): img(src='http://img.youtube.com/vi/#{video.youtubeID}/0.jpg')
+              figcaption
+                .heading
+                  a(href='/video/#{video.slug}'): h4: strong= video.title
+
+            if index !== 0
+        .col-md-4.col-sm-6.col-xs-12
+          .portfolio
+            figure.effect-julia
+              a(href='/video/#{video.slug}'): h5= video.title
+
+            if index != 3
+              hr
+
+        .medium-3.columns
+
+      each tag in tags
+
+        a.hashtag(href='/tag/#{tag}')= tag
+
+section#screenshot.section
+  .container
+    .section-header
+      h1.section-title.wow.fadeInRight(data-wow-duration="1000ms", data-wow-delay="300ms") Viimeisimmät kuvat
+  .row(style="margin:0; padding:0;")
+    each picture in pictures
+      .col-md-4.col-sm-6.col-xs-12(style="margin:0; padding:0;")
+        .portfolio
+          figure.effect-julia
+            a(href='/picture/#{picture.slug}'): img(src=picture.image.full)
+            figcaption
+              .heading
+                h3: a(href='/picture/#{picture.slug}'): h4: strong= picture.title
+
+////////////////////////////////
+
+if !req.param('noLayout')
+  include includes/footer.jade

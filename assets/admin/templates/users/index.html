@@ -1,0 +1,34 @@
+<div class="row container">
+  <div class="medium-4 columns scrollable container">
+    <ul class="index">
+      
+      <li>
+        <a ng-class="{ active: user === 'invite' }"
+           ui-sref=".invite">
+          <span class="fa fa-plus"></span>
+          Add Writer
+        </a>
+      </li>
+
+      <hr>
+
+      <li>
+        <input  type="text"
+                placeholder="Search..."
+                ng-model="searchText">
+      </li>
+
+      <li class="user" ng-repeat="_user in users | filter:searchText | orderBy: ['isDisabled', 'name']">
+        <a ng-class="{ active: _user.id === user.id, disabled: _user.isDisabled }"
+           ui-sref=".show({ userID: _user.id })">
+           {{ _user.name }}
+           <small>{{ _user.pseudonym }}</small>
+         </a>
+      </li>
+
+    </ul>
+  </div>
+
+  <div ui-view class="medium-6 columns">
+  </div>
+</div>

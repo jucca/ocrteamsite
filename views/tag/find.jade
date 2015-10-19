@@ -1,0 +1,19 @@
+if !req.param('noLayout')
+  include ../includes/head.jade
+
+////////////////////////////////
+
+#stage
+  .row
+
+    .medium-8.large-10.columns
+      - for tag in tags
+        a.hashtag(href='/tag/#{tag}')= tag
+
+    .medium-4.large-2.columns
+      #vertical-ad.show-for-medium-up
+
+////////////////////////////////
+
+if !req.param('noLayout')
+  include ../includes/footer.jade

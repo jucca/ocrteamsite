@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title Team Jukka | Moderointi
+
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    base(href='/admin')
+
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css")
+    include linker/admin/styles
+
+  body(ng-app='app')
+
+    toaster-container(toaster-options="{'position-class': 'toast-top-full-width', 'time-out': 2000 }")
+
+    .row.container
+
+      nav.medium-2.columns
+        include includes/adminNav
+
+      #stage.medium-10.columns(ui-view)
+
+    include linker/admin/templates
+    include linker/admin/scripts

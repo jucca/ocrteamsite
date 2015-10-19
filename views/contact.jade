@@ -1,0 +1,33 @@
+if !req.param('noLayout')
+  include includes/head.jade
+
+////////////////////////////////
+
+#stage
+  .row
+    
+    .small-12.columns
+      h1 Contact us
+    
+    .medium-4.columns.text-center
+      br
+      br
+      h4.subheader Vihaan?
+      a(href='mailto:teamjukka@gmail.com?subject=Heitteri' target='_blank') teamjukka@gmail.com
+      br
+      Niin mielesi olet pahoittanut.
+
+    .medium-4.columns.text-center
+      br
+      br
+      h4.subheader Ruusuja?
+      a(href='mailto:teamjukka@gmail.com?subject=kudos' target='_blank') teamjukka@gmail.com
+      br
+      small.
+        Palautetta saa laittaa. Kaikki palaute luetaan ja niille nauretaan :P
+  br
+
+////////////////////////////////
+
+if !req.param('noLayout')
+  include includes/footer.jade

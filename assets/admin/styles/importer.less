@@ -1,0 +1,203 @@
+/**
+ * importer.less
+ *
+ * By default, new Sails projects are configured to compile this file
+ * from LESS to CSS.  Unlike CSS files, LESS files are not compiled and
+ * included automatically unless they are imported below.
+ *
+ * The LESS files imported below are compiled and included in the order
+ * they are listed.  Mixins, variables, etc. should be imported first
+ * so that they can be accessed by subsequent LESS stylesheets.
+ *
+ * (Just like the rest of the asset pipeline bundled in Sails, you can
+ * always omit, customize, or replace this behavior with SASS, SCSS,
+ * or any other Grunt tasks you like.)
+ */
+
+
+
+// For example:
+//
+// @import 'variables/colors.less';
+// @import 'mixins/foo.less';
+// @import 'mixins/bar.less';
+// @import 'mixins/baz.less';
+//
+// @import 'styleguide.less';
+// @import 'pages/login.less';
+// @import 'pages/signup.less';
+//
+// etc.
+
+@import 'imports/colors.less';
+@import 'imports/toaster.less';
+@import 'imports/mail.less';
+@import 'imports/spinner.less';
+
+#stage {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  height: 100%;
+}
+
+nav {
+  .fa {
+    padding-right: 5px;
+  }
+}
+
+.index {
+  list-style-type: none;
+  li {
+    margin-bottom: 15px;
+  }
+  small {
+    display: block;
+  }
+
+  .disabled {
+    color: #ddd;
+  }
+}
+
+input.ng-invalid, textarea.ng-invalid {
+  border-bottom-color: #cf2a0e !important;
+}
+
+li a.active {
+  font-weight: bold;
+}
+
+.collapseVert {
+  width: 0px;
+  // margin: 0px;
+  // padding: 0px;
+  // overflow: hidden;
+}
+
+a.hashtag {
+  display: inline-block;
+  padding: 3px 5px;
+  margin: 3px 5px;
+  background-color: #ccc;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+
+  &::after {
+    content: " \f02b";
+    font-family: FontAwesome;
+    font-size: 14px;
+  }
+
+  &:hover {
+    border-bottom: none;
+    background-color: #888;
+    color: white;
+  }
+
+  &.inline {
+    margin: 0px;
+    padding: 0px;
+    font-size: inherit;
+    background-color: inherit;
+    color: inherit;
+    font-weight: inherit;
+    color: #666;
+  }
+
+    &:hover {
+      background-color: #333;
+    }
+}
+
+.context-menu {
+  display: none;
+  &.open {
+    display: block;
+  }
+}
+
+.collapse {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.preview {
+  img {
+    display: block;
+    max-width: 80%;
+  }
+}
+
+.publish-btn {
+  margin-top: 30px;
+}
+
+.file-dropzone {
+  cursor: pointer;
+}
+
+.headline-img {
+  margin-bottom: 20px;
+}
+
+.overlay-container {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  padding-top: 25%;
+  opacity: 0;
+  text-align: center;
+  background: white;
+  font-weight: bold;
+  &:hover {
+    opacity: .7;
+    cursor: pointer;
+  }
+}
+
+.dropping .drop-message {
+  opacity: .7;
+}
+
+.button.active, button.active {
+  background-color: #007095;
+  span {
+    font-weight: bold;
+  }
+}
+
+img.headline {
+  margin-bottom: 20px;
+}
+
+.container {
+  height: 100%;
+  &.scrollable {
+    overflow-y: scroll;
+  }
+}
+
+.controls {
+  position: absolute;
+  top: 0;
+}
+
+.vertical-ad {
+  max-width: 150px;
+}
+
+.horizontal-ad {
+  max-height: 150px;
+}

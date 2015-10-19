@@ -1,0 +1,42 @@
+if !req.param('noLayout')
+  include ../includes/head.jade
+
+////////////////////////////////
+
+#stage
+  .row
+    
+    .medium-8.large-10.columns
+
+      article
+
+        img(src=image.full)
+
+        h1.title.page-title= title
+
+        - var writtenOn = new Date(createdAt); var month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        em.by-line #{curator.pseudonym} on #{month[writtenOn.getMonth()]} #{writtenOn.getDate()}, #{writtenOn.getFullYear()}
+
+        br
+
+        - for tag in tags
+          a.hashtag(href="/tag/#{tag}")= tag
+
+      hr
+
+      .fb-comments(data-href='#{req.protocol}://#{req.get("host")}/picture/#{slug}', data-width='600')
+
+    .medium-4.large-2.columns
+      #vertical-ad.show-for-medium-up
+
+  if req.session.user
+    #authenticatedUserMessage.show-for-large-up
+      strong Olet näemmä kirjautunut
+      |  Voit siis hallita kuvaa
+      a.tiny.button.admin-link(href="/admin/picture/#{id}", target='_blank').
+        moderointipuolella
+
+////////////////////////////////
+
+if !req.param('noLayout')
+  include ../includes/footer.jade

@@ -1,0 +1,38 @@
+{
+  "name": "teamjukka",
+  "version": "0.0.0",
+  "description": "This is what we do!",
+  "main": "app.js",
+  "license": "GPLv3",
+  "homepage": "teamjukka.no-ip.org",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.4.4",
+    "angular": "~1.2.25",
+    "fastclick": "~1.0.3",
+    "angular-ui-router": "~0.2.11",
+    "angular-animate": "~1.2.25",
+    "animate.css": "~3.2.0",
+    "lodash": "~2.4.1",
+    "angular-route": "~1.2.25",
+    "font-awesome": "~4.2.0",
+    "angular-foundation": "~0.3.1",
+    "angularjs-toaster": "~0.4.8",
+    "angular-sanitize": "~1.2.25",
+    "angular-elastic": "~2.4.0",
+    "angular-markdown-directive": "~0.3.0",
+    "angular-marked": "Hypercubed/angular-marked#~0.0.12",
+    "ng-context-menu": "~1.0.0",
+    "ng-file-upload": "~1.6.12",
+    "ngInfiniteScroll": "~1.1.2",
+    "moment": "~2.8.3",
+    "angular-moment": "~0.8.2",
+    "history.js": "~1.8.0"
+  }
+}
